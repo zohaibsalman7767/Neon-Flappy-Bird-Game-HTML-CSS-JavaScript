@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg: #080b18;
+    --panel: #10172a;
+    --neon: #39ffb6;
+    --blue: #38bdf8;
+    --purple: #a855f7;
+    --text: #f1f5f9;
+    --muted: #91a0bb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 28px 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        radial-gradient(ellipse at top, #142341 0%, transparent 55%),
+        var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+}
+
+button {
+    font: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.game-container {
+    width: 100%;
+    max-width: 460px;
+    text-align: center;
+}
+
+.game-header {
+    margin-bottom: 20px;
+}
+
+.eyebrow {
+    color: var(--neon);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    margin-bottom: 8px;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(25px, 7vw, 37px);
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-shadow: 0 0 22px #39ffb655;
+}
+
+h1 span {
+    color: var(--neon);
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 16px;
+    margin-top: 7px;
+    letter-spacing: 1px;
+}
+
+.score-board {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 auto 14px;
+}
+
+.score-card {
+    min-width: 125px;
+    padding: 10px 22px;
+    background: linear-gradient(145deg, #131e34, #0d1426);
+    border: 1px solid #39ffb64a;
+    border-radius: 12px;
+    box-shadow: 0 0 18px #39ffb610;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.best-card {
+    border-color: #a855f755;
+}
+
+.score-label {
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+.score-card span:last-child {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--neon);
+}
+
+.best-card span:last-child {
+    color: #c084fc;
+}
+
+.game-frame {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 2px solid #39ffb68a;
+    box-shadow:
+        0 0 12px #39ffb633,
+        0 0 35px #39ffb61c,
+        inset 0 0 22px #38bdf81a;
+    background: #08152c;
+    line-height: 0;
+    touch-action: manipulation;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 420 / 640;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.game-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: linear-gradient(#07101a75, #070b19b8);
+    backdrop-filter: blur(4px);
+    line-height: normal;
+}
+
+.game-overlay.hidden {
+    display: none;
+}
+
+.overlay-content {
+    width: 100%;
+    max-width: 310px;
+    padding: 26px 20px;
+    border: 1px solid #39ffb65c;
+    border-radius: 18px;
+    background: #0a1225e8;
+    box-shadow: 0 0 30px #39ffb61c;
+}
+
+.bird-icon {
+    font-size: 52px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 12px #39ffb6);
+    animation: float 1.5s ease-in-out infinite;
+}
+
+.overlay-tag {
+    color: var(--neon);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 9px;
+}
+
+.overlay-content h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(19px, 5vw, 25px);
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.overlay-content>p:not(.overlay-tag) {
+    color: #b3c1d9;
+    font-size: 17px;
+    line-height: 1.5;
+    margin-bottom: 22px;
+}
+
+.primary-btn,
+.secondary-btn {
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 14px 10px;
+    background: var(--neon);
+    color: #06120e;
+    font-size: 13px;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px #39ffb644;
+}
+
+.primary-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px #39ffb677;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.secondary-btn {
+    flex: 1;
+    max-width: 175px;
+    padding: 12px 8px;
+    color: var(--text);
+    background: #131d31;
+    border: 1px solid #52647d;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.secondary-btn:hover:not(:disabled) {
+    border-color: var(--neon);
+    box-shadow: 0 0 14px #39ffb622;
+}
+
+button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.instructions {
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.instructions span {
+    display: inline-block;
+    color: var(--neon);
+    font-weight: 700;
+    margin: 0 2px;
+}
+
+footer {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #263149;
+}
+
+footer p:first-child {
+    color: #b9c4d8;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+footer span {
+    color: var(--neon);
+    text-shadow: 0 0 12px #39ffb655;
+}
+
+.footer-small {
+    color: #64748b;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-top: 7px;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@media (max-width: 380px) {
+    body {
+        padding: 18px 10px;
+    }
+
+    .score-card {
+        min-width: 110px;
+        padding: 8px 15px;
+    }
+
+    .overlay-content {
+        padding: 20px 14px;
+    }
+
+    .overlay-content>p:not(.overlay-tag) {
+        font-size: 15px;
+    }
+
+    .controls {
+        gap: 8px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080b18">
+    <title>Neon Flappy Bird | Zohaib Salman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="game-container">
+        <header class="game-header">
+            <p class="eyebrow">ARCADE GAME</p>
+            <h1>NEON <span>FLAPPY</span></h1>
+            <p class="subtitle">Fly through the neon world!</p>
+        </header>
+
+        <section class="score-board" aria-label="Game scores">
+            <div class="score-card">
+                <span class="score-label">SCORE</span>
+                <span id="score">0</span>
+            </div>
+            <div class="score-card best-card">
+                <span class="score-label">BEST</span>
+                <span id="bestScore">0</span>
+            </div>
+        </section>
+
+        <section class="game-frame">
+            <canvas id="gameCanvas" width="420" height="640" aria-label="Flappy Bird game. Press Space or tap to fly.">
+            </canvas>
+
+            <div class="game-overlay" id="gameOverlay">
+                <div class="overlay-content">
+                    <div class="bird-icon">🐤</div>
+                    <p class="overlay-tag" id="overlayTag">READY PLAYER ONE</p>
+                    <h2 id="overlayTitle">READY TO FLY?</h2>
+                    <p id="overlayMessage">
+                        Tap, click, or press Space to fly through the neon pipes.
+                    </p>
+                    <button id="startBtn" class="primary-btn">START GAME</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="controls">
+            <button id="pauseBtn" class="secondary-btn" disabled>
+                ❚❚ PAUSE
+            </button>
+            <button id="restartBtn" class="secondary-btn">
+                ↻ RESTART
+            </button>
+        </div>
+
+        <p class="instructions">
+            <span>SPACE</span> / <span>↑</span> / <span>CLICK</span> / <span>TAP</span>
+            TO FLY
+        </p>
+
+        <footer>
+            <p>Created By <span>Zohaib Salman</span></p>
+            <p class="footer-small">BUILT WITH HTML · CSS · JAVASCRIPT</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
